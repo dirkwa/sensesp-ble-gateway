@@ -1,0 +1,20 @@
+{
+  "name": "SensESP BLE Gateway",
+  "version": "0.1.0",
+  "description": "BLE gateway for SensESP — bridges BLE devices to signalk-server's BLE provider API via HTTP POST and WebSocket",
+  "keywords": "ble, bluetooth, signalk, gateway, esp32, esp32-p4, esp32-c5, sensesp",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dirkwa/sensesp-ble-gateway.git"
+  },
+  "license": "MIT",
+  "frameworks": ["arduino", "espidf"],
+  "platforms": ["espressif32"],
+  "dependencies": {
+    "SignalK/SensESP": ">=3.0.0"
+  },
+  "build": {
+    "srcFilter": ["+<*>"],
+    "includeDir": "src"
+  }
+}
