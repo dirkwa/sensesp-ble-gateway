@@ -359,6 +359,7 @@ void BLESignalKGateway::post_pending_advertisements() {
                         ? config_.firmware_version
                         : String(kSensESPVersion);
   doc["uptime"] = millis() / 1000;
+  doc["free_heap"] = ESP.getFreeHeap();
   if (ble_provisioner_) {
     String mac = ble_provisioner_->mac_address();
     if (mac.length() > 0) {
