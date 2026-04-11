@@ -354,6 +354,16 @@ void BLESignalKGateway::post_pending_advertisements() {
   // Build the JSON batch.
   JsonDocument doc;
   doc["gateway_id"] = SensESPBaseApp::get_hostname();
+  doc["hostname"] = SensESPBaseApp::get_hostname();
+  doc["firmware"] = config_.firmware_version.length() > 0
+                        ? config_.firmware_version
+                        : String(kSensESPVersion);
+  if (ble_provisioner_) {
+    String mac = ble_provisioner_->mac_address();
+    if (mac.length() > 0) {
+      doc["mac"] = mac;
+    }
+  }
   JsonArray devices = doc["devices"].to<JsonArray>();
   for (const auto& ad : to_post) {
     JsonObject dev = devices.add<JsonObject>();
