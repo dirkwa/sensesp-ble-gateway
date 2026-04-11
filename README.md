@@ -58,7 +58,7 @@ See the [examples/](examples/) directory for complete working firmware.
 
 ## Requirements
 
-- SensESP >= 3.0.0
+- SensESP >= 3.3.0 (needs `SKWSClient::get_auth_token()`, hostname persistence fix, and stale polling href fix — all merged into main, pending next release; until then use `https://github.com/SignalK/SensESP.git#main` in `lib_deps`)
 - signalk-server with BLE provider API (branch `ble-provider-api`)
 - PlatformIO with `framework = espidf, arduino` (pioarduino)
 

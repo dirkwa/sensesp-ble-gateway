@@ -11,7 +11,7 @@
   "frameworks": ["arduino", "espidf"],
   "platforms": ["espressif32"],
   "dependencies": {
-    "SignalK/SensESP": ">=3.0.0"
+    "SignalK/SensESP": ">=3.3.0"
   },
   "build": {
     "srcFilter": ["+<*>"],
