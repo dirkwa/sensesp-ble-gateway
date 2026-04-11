@@ -358,6 +358,7 @@ void BLESignalKGateway::post_pending_advertisements() {
   doc["firmware"] = config_.firmware_version.length() > 0
                         ? config_.firmware_version
                         : String(kSensESPVersion);
+  doc["uptime"] = millis() / 1000;
   if (ble_provisioner_) {
     String mac = ble_provisioner_->mac_address();
     if (mac.length() > 0) {
