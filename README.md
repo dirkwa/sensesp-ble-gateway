@@ -65,3 +65,23 @@ See the [examples/](examples/) directory for complete working firmware.
 ## Note on the ESP32-P4 C6 Antenna
 
 The Waveshare ESP32-P4-WIFI6-POE-ETH uses the ESP32-C6-MINI-**1U** module which has **no built-in PCB antenna**. You must connect an external 2.4 GHz antenna to the IPEX connector for BLE to work.
+
+## License
+
+sensesp-ble-gateway 1.0.0 and later is **source available, not open source**.
+See [LICENSE.md](LICENSE.md).
+
+**You may**, free of charge: run it on your own boat or fleet, private or
+commercial; use it for internal company operations; modify it for your own use;
+use it in education and research; and provide professional services around it.
+
+**You may not**: redistribute it, or publish a modified version of it to the
+PlatformIO registry, the Arduino library index or anywhere else. Verbatim
+copies of official releases may be mirrored and cached.
+
+Versions 0.1.0 and earlier remain available under the Apache-2.0 license, see
+[LICENSE-Apache-2.0-through-v0.x.txt](LICENSE-Apache-2.0-through-v0.x.txt).
+
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md).
