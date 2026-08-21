@@ -4,3 +4,7 @@ sdkconfig.*_*
 managed_components/
 dependencies.lock
 CMakeLists.txt
+
+# Local credential/build overrides — never commit these.
+platformio_local.ini
+secrets.h
