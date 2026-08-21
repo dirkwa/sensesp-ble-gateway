@@ -19,11 +19,20 @@ static std::shared_ptr<BLESignalKGateway> g_gateway;
 void setup() {
   SetupLogging(ESP_LOG_INFO);
 
+  // Credentials come from build flags, never from the source tree. Set them
+  // in a local, git-ignored file rather than here:
+  //
+  //   ; platformio_local.ini  (add `extra_configs = platformio_local.ini`)
+  //   build_flags = -D WIFI_SSID='"your-ssid"' -D WIFI_PASSWORD='"your-pass"'
+  //
+  // Leaving them unset drops the call entirely, so SensESP falls back to its
+  // own WiFi provisioning portal instead of shipping a hardcoded network.
   SensESPAppBuilder builder;
-  auto app = builder.set_hostname(GATEWAY_HOSTNAME)
-                 ->set_wifi_client("MOIN", "Moin2018!")
-                 ->enable_ota("c5-ble-gw-ota")
-                 ->get_app();
+  builder.set_hostname(GATEWAY_HOSTNAME)->enable_ota("c5-ble-gw-ota");
+#if defined(WIFI_SSID) && defined(WIFI_PASSWORD)
+  builder.set_wifi_client(WIFI_SSID, WIFI_PASSWORD);
+#endif
+  auto app = builder.get_app();
 
   // Lower scan duty cycle to reduce memory pressure on the C5
   // (WiFi + BLE + HTTP/WS is tight on internal RAM).
