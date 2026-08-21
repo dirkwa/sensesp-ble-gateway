@@ -1,5 +1,30 @@
 # SensESP BLE Gateway
 
+> [!IMPORTANT]
+> **This project is archived and no longer maintained.**
+>
+> It is superseded by **[espos-ble-gateway](https://github.com/dirkwa/espos-ble-gateway)**,
+> a rewrite on [espOS](https://github.com/dirkwa/espOS) (pure ESP-IDF 6) that
+> speaks the same signalk-server BLE provider protocol, so no server-side
+> change is needed.
+>
+> What the successor adds:
+>
+> * **GATT write-without-response** (`with_response`), which JK-BMS, Daly-BMS
+>   and similar peripherals require — the field was always in the server
+>   protocol, and this firmware silently ignored it.
+> * WiFi provisioning, a web config UI, signed OTA with rollback and a log
+>   ring, all from espOS rather than hand-rolled.
+> * Host tests for the wire format, and a CI matrix over five targets.
+> * Fixes for several bugs that live on in this code: GATT operations ignoring
+>   the connection handle (two devices sharing a vendor UUID crossed wires), a
+>   double `register_for_notify` with a NULL BDA, and under-reported
+>   advertisement drops.
+>
+> The one thing it does **not** carry over is the **NimBLE / ESP32-C5** path.
+> That backend is scan-only here too (it never had a GATT client), so if you
+> need C5 support this repository is the only place it exists.
+
 BLE gateway library for [SensESP](https://github.com/SignalK/SensESP) that bridges Bluetooth Low Energy devices to [signalk-server](https://github.com/SignalK/signalk-server)'s BLE provider API.
 
 ## Features
